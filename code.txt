@@ -1,0 +1,51 @@
+class Solution{
+    public:
+    double MedianOfArrays(vector<int>& array1, vector<int>& array2)
+    {
+
+int m=array1.size();
+int n=array2.size();
+vector<int>ans;
+int i=0,j=0;
+double avg;
+while(i<m && j<n)
+{
+  if(array1[i]<=array2[j])
+  {
+      ans.push_back(array1[i]);
+      i++;
+  }
+  else
+  {
+      ans.push_back(array2[j]);
+      j++;
+  }
+}
+while(i<m)
+{
+  ans.push_back(array1[i]);
+      i++;   
+}
+while(j<n)
+{
+     ans.push_back(array2[j]);
+      j++;
+}
+
+int size=ans.size();
+int n1=size/2;
+if((size%2)!=0)
+{
+    return ans[size/2];
+}
+else
+{
+  double a=ans[n1-1];
+  double b=ans[n1];
+  avg=(a+b)/2;
+  return avg;
+}
+
+    
+    }
+};
